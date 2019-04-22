@@ -15,11 +15,12 @@
     <!-- Added a link to Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
-    <!-- Added a link to our external stylesheet-->
     <!--   <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Crystal Collector</title>
 
-    <style>
+    <!--     <style>
         .fancy {
             font-size: 100px;
             color: green;
@@ -48,17 +49,52 @@
             float: left;
             margin-left: 10px;
         }
-    </style>
+    </style> -->
 
 </head>
 
 <body>
-    <h1><strong>CrystalsCollector!</strong></h1>
+    <div class="header">
+        <h1>Crystals Collector!</h1>
+    </div>
+    <div class="instructions">
 
-    <div class="container">
-        <div class="col-6" id="goal-div"> aca va el score </div>
-        <div class="col-3" id="score-div"> col cyan</div>
+        <p>You will be given a random number at the start of the game.<br>
+        There are four crystals below. By clicking on a crystal, you will add a specific amount of points to your total score.<br>
+        You win the game by matching your total score to the random number. You lose the game if your total score goes above the random number.<br>
+        The value of each crystal is hidden from you until you click on it.<br>
+        Each time when the game starts, the game will change the values of each crystal.</p>
 
+    </div>
+    <div class="numberGoal">
+
+        <span id="randomNumber"></span>
+
+    </div>
+    <div class="winsAndLosses">
+        <h2>Wins:
+            <span id="numberWins"></span>
+            </br>
+            Losses:
+            <span id="numberLosses"></span>
+        </h2>
+    </div>
+    <div class="gems">
+        <img src="assets/images/red.png" class=gemImage id="three" alt="Red Gem">
+        <img src="assets/images/diamond.png" class=gemImage id="one" alt="Blue Gem">
+        <img src="assets/images/yellow.png" class=gemImage id="four" alt="Yellow Gem">
+        <img src="assets/images/green.png" class=gemImage id="two" alt="Green Gem">
+    </div>
+    <div class="userTotal">
+        <h2>Your actual guess is :
+            <span id="finalTotal"></span>
+        </h2>
+    </div>
+
+    <div class="score">
+        <h2>
+            <span id="userScore"></span>
+        </h2>
     </div>
 
     <script type="text/javascript">
