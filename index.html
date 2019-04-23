@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Added link to the jQuery Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Document1</title>
 
-    <!-- Added link to the jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.4.0.min.js"
-        integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Added link to the jQuery library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Added a link to Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -20,50 +19,21 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Crystal Collector</title>
 
-    <!--     <style>
-        .fancy {
-            font-size: 100px;
-            color: green;
-        }
-
-        h1 {
-            width: 50%;
-            background-color: orange;
-            color: white;
-            padding: 20px;
-            /*      padding-bottom: 20px; */
-        }
-
-        #goal-div {
-            background-color: green;
-            padding: 50px;
-        }
-
-        .container {
-            margin-left: 0px;
-            background-color: beige;
-        }
-
-        #score-div {
-            background-color: blue;
-            float: left;
-            margin-left: 10px;
-        }
-    </style> -->
-
 </head>
 
 <body>
     <div class="header">
-        <h1>Crystals Collector!</h1>
+        <h1>Crystals Collectorr!</h1>
     </div>
     <div class="instructions">
 
         <p>You will be given a random number at the start of the game.<br>
-        There are four crystals below. By clicking on a crystal, you will add a specific amount of points to your total score.<br>
-        You win the game by matching your total score to the random number. You lose the game if your total score goes above the random number.<br>
-        The value of each crystal is hidden from you until you click on it.<br>
-        Each time when the game starts, the game will change the values of each crystal.</p>
+            There are four crystals below. By clicking on a crystal, you will add a specific amount of points to your
+            total score.<br>
+            You win the game by matching your total score to the random number. You lose the game if your total score
+            goes above the random number.<br>
+            The value of each crystal is hidden from you until you click on it.<br>
+            Each time when the game starts, the game will change the values of each crystal.</p>
 
     </div>
     <div class="numberGoal">
@@ -80,10 +50,10 @@
         </h2>
     </div>
     <div class="gems">
-        <img src="assets/images/red.png" class=gemImage id="three" alt="Red Gem">
-        <img src="assets/images/diamond.png" class=gemImage id="one" alt="Blue Gem">
-        <img src="assets/images/yellow.png" class=gemImage id="four" alt="Yellow Gem">
-        <img src="assets/images/green.png" class=gemImage id="two" alt="Green Gem">
+        <img src="assets/images/ruby.png" class=gemImage id="ruby" alt="Ruby Gem">
+        <img src="assets/images/diamond.png" class=gemImage id="diamond" alt="Diamond Gem">
+        <img src="assets/images/gold.png" class=gemImage id="gold" alt="Gold Gem">
+        <img src="assets/images/pearl.png" class=gemImage id="pearl" alt="Pearl Gem">
     </div>
     <div class="userTotal">
         <h2>Your actual guess is :
@@ -101,6 +71,66 @@
 
         $(document).ready(function () {
 
+            var random = Math.floor(Math.random() * 101 + 10);
+            $("#randomNumber").text(random);
+            console.log(random);
+
+            var userGuess = 0;
+            var wins = 0;
+            var losses = 0;
+            var rubyValue = Math.floor(Math.random() * 10 + 1);
+            var pearlValue = Math.floor(Math.random() * 10 + 1);
+            var goldValue = Math.floor(Math.random() * 10 + 1);
+            var diamondValue = Math.floor(Math.random() * 10 + 1);
+
+            $("#userScore").text(userGuess);
+            $("#numberLosses").text(losses);
+            $("#numberWins").text(wins);
+
+
+
+            function result() {
+                if (userGuess > random) {
+                    losses = losses + 1;
+                    $("#numberLosses").text(losses);
+                    userGuess = 0;
+                /*     var random = Math.floor(Math.random() * 101 + 10); */
+                }   else if(userGuess == random) {
+                            wins = wins +1;
+                            $("#numberWins").text(wins);
+                            userGuess = 0;
+                      /*       var random = Math.floor(Math.random() * 101 + 10); */
+                }
+            }
+
+            $("#ruby").on ("click", function(){
+             /*    alert("click ruby"); */
+                userGuess = userGuess + rubyValue;
+                $("#userScore").text(userGuess);
+                result();
+
+            })
+
+            $("#gold").on ("click", function(){
+             /*    alert("click ruby"); */
+                userGuess = userGuess + goldValue;
+                $("#userScore").text(userGuess);
+                result();
+            })
+
+            $("#pearl").on ("click", function(){
+             /*    alert("click ruby"); */
+                userGuess = userGuess + pearlValue;
+                $("#userScore").text(userGuess);
+                result();
+            })
+
+            $("#diamond").on ("click", function(){
+             /*    alert("click ruby"); */
+                userGuess = userGuess + diamondValue;
+                $("#userScore").text(userGuess);
+                result();
+            })
 
 
 
